@@ -221,11 +221,8 @@ gradle-app.setting
 # Cache of project
 .gradletasknamecache
 
-
-
-
 ### Gradle Patch ###
 # Java heap dump
 *.hprof
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,java,intellij,gradle
+.env
