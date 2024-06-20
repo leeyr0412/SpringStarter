@@ -1,5 +1,10 @@
 package com.study.springStarter.member.controller.request;
 
+import com.study.springStarter.member.entity.Member;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -24,5 +29,15 @@ public class MemberRegisterRequest {
     private String name;
     @Past(message = "유효한 날짜를 입력하세요")
     private LocalDate birthDate;
+
+    public Member toEntity() {
+        return Member.builder()
+                .loginId(this.getLoginId())
+                .password(this.getPassword())
+                .name(this.getName())
+                .birthDate(this.getBirthDate())
+                .email(this.getEmail())
+                .build();
+    }
 }
 
