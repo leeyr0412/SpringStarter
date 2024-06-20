@@ -20,8 +20,9 @@ public class MemberService {
      * 회원 가입
      */
     public String signUp(MemberRegisterRequest request) {
-        memberRepository.findByLoginId(request.getLoginId())
-                .orElseThrow(() -> new InvalidInputException("loginId", "중복된 ID 입니다."));
+        if(memberRepository.findByLoginId(request.getLoginId()).isPresent()){
+            throw new InvalidInputException("loginId", "중복된 ID 입니다.");
+        }
 
         Member member = request.toEntity();
 
