@@ -11,3 +11,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+
+logging:
+  level:
+    com.study.springStarter: debug
+
+jwt:
+  secret: ${JWT_SECRET}
