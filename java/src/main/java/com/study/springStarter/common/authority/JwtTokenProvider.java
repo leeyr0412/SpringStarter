@@ -48,7 +48,6 @@ public class JwtTokenProvider {
                 .issuedAt(now)
                 .expiration(accessExpiration)
                 .signWith(getKey(), Jwts.SIG.HS256)
-                .signWith(SignatureAlgorithm.HS512, "123123")
                 .compact();
 
         return new TokenInfo("Bearer", jwt);
