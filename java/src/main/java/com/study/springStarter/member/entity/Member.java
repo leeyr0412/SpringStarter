@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "`member`")
@@ -33,6 +34,10 @@ public class Member {
     @Column(nullable = false, length = 50)
     private String email;
 
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "member")
+    private List<MemberRole> memberRoles;
+
     @Builder
     private Member(Long id, String loginId, String password, String name, LocalDate birthDate, String email) {
         this.id = id;
@@ -41,5 +46,6 @@ public class Member {
         this.name = name;
         this.birthDate = birthDate;
         this.email = email;
+        this.memberRoles = null;
     }
 }
