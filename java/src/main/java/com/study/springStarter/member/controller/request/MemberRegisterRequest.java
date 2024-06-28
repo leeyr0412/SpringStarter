@@ -30,10 +30,10 @@ public class MemberRegisterRequest {
     @Past(message = "유효한 날짜를 입력하세요")
     private LocalDate birthDate;
 
-    public Member toEntity() {
+    public Member toEntity(String encryptedPw) {
         return Member.builder()
                 .loginId(this.getLoginId())
-                .password(this.getPassword())
+                .password(encryptedPw)
                 .name(this.getName())
                 .birthDate(this.getBirthDate())
                 .email(this.getEmail())
